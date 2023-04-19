@@ -1,4 +1,4 @@
-package com.se.controller;
+package com.se.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

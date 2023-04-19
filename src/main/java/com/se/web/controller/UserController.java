@@ -1,9 +1,10 @@
-package com.se.controller;
+package com.se.web.controller;
 
 import com.se.config.JwtConfig;
 import com.se.dao.UserDao;
 import com.se.model.vo.UserVO;
 import com.se.service.UserService;
+import com.se.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
