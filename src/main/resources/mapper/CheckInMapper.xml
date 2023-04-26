@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nju.edu.erp.dao.CheckInDao">
+
+    <select id="ifCheckIn" resultType="int">
+        select COUNT(*)
+            from checklog
+            where year=#{year} and month=#{month} and day=#{day} and name=#{name}
+    </select>
+
+
+    <insert id = "checkIn">
+        insert into checklog (`name`,`year`,`month`,`day`)
+        values (#{name},#{year},#{month},#{day});
+    </insert>
+
+    <select id="totalThisMonth" resultType="int">
+        select COUNT(*)
+        from checklog
+        where year=#{year} and month=#{month} and name=#{name}
+    </select>
+
+    <update id="updateCheckIn">
+        update stuff
+        set checkIn = checkIn + 1
+        where name =#{name}
+    </update>
+
+</mapper>

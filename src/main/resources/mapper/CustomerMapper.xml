@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.dao.CustomerDao">
+
+    <update id="updateOne" parameterType="CustomerPO">
+                update customer
+                <set>
+                    <if test = "type != null">`type` = #{type}, </if>
+                    <if test = "level != null">`level` = #{level}, </if>
+                    <if test = "phone != null">`phone` = #{phone}, </if>
+                    <if test = "address != null">`address` = #{address}, </if>
+                    <if test = "zipcode != null">`zipcode` = #{zipcode}, </if>
+                    <if test = "lineOfCredit != null">`line_of_credit` = #{lineOfCredit}, </if>
+                    <if test = "receivable != null">`receivable` = #{receivable}, </if>
+                    <if test = "payable != null">`payable` = #{payable}, </if>
+                    <if test = "operator != null">`operator` = #{operator}, </if>
+                </set>
+                where id = #{id}
+    </update>
+
+    <select id="findOneById" resultType="com.se.model.po.CustomerPO">
+        select * from customer where id=#{supplier}
+    </select>
+
+    <select id="findOneByName" resultType="com.se.model.po.CustomerPO">
+        select * from customer where name=#{name}
+    </select>
+
+    <select id="findAllByType" resultType="com.se.model.po.CustomerPO">
+        select * from customer where `type` = #{type}
+    </select>
+
+    <select id="findAll" resultType="com.se.model.po.CustomerPO">
+        select * from customer
+    </select>
+
+    <select id="findAllUser" resultType="com.se.model.po.UserPO">
+        select * from user
+    </select>
+
+    <resultMap id="CustomerPO" type="com.se.model.po.CustomerPO">
+        <id column="id" property="id"></id>
+        <result column="type" property="type"></result>
+        <result column="level" property="level"></result>
+        <result column="name" property="name"></result>
+        <result column="phone" property="phone"></result>
+        <result column="address" property="address"></result>
+        <result column="zipcode" property="zipcode"></result>
+        <result column="email" property="email"></result>
+        <result column="line_of_credit" property="lineOfCredit"></result>
+        <result column="receivable" property="receivable"></result>
+        <result column="payable" property="payable"></result>
+        <result column="operator" property="operator"></result>
+    </resultMap>
+
+</mapper>

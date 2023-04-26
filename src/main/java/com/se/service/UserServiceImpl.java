@@ -17,7 +17,6 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
-
     private final JwtConfig jwtConfig;
 
     @Autowired
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String, String> login(UserVO userVO) {
         UserPO userPO = userDao.findByUsernameAndPassword(userVO.getName(), userVO.getPassword());
-        if (null == userPO ) {
+        if (null == userPO) {
             throw new MyServiceException("A0000", "用户名或密码错误");
         }
         Map<String, String> authToken = new HashMap<>();

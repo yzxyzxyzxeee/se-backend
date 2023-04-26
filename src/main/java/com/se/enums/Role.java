@@ -10,5 +10,6 @@ public enum Role {
     GM, // 总经理
     ADMIN // 最高权限
 
+
 }
 
