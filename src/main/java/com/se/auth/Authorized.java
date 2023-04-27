@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Authorized {
     Role[]  roles() default {
-             Role.INVENTORY_MANAGER,  Role.GM};
+            Role.ADMIN, Role.SALE_STAFF, Role.INVENTORY_MANAGER, Role.FINANCIAL_STAFF, Role.HR, Role.GM};
     String message() default "";
 }

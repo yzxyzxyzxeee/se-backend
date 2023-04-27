@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -27,5 +26,6 @@ public class StuffPO {
     private Integer jobLevel;
     private Integer salaryCalculateWay;
     //打卡次数，每个月底用于工资计算，每个月1号自动清零
-    private Integer checkIn;
+//    private Integer checkIn;
+    private String password;
 }

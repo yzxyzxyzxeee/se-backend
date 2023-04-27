@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.CheckInDao">
+<mapper namespace="com.se.dao.CheckInDao">
 
     <select id="ifCheckIn" resultType="int">
         select COUNT(*)
@@ -10,8 +10,8 @@
 
 
     <insert id = "checkIn">
-        insert into checklog (`name`,`year`,`month`,`day`)
-        values (#{name},#{year},#{month},#{day});
+        insert into checklog (`name`,`year`,`month`,`day`,`hour`,`minute`,`second`)
+        values (#{name},#{year},#{month},#{day},#{hour},#{minute},#{second});
     </insert>
 
     <select id="totalThisMonth" resultType="int">
@@ -22,7 +22,7 @@
 
     <update id="updateCheckIn">
         update stuff
-        set checkIn = checkIn + 1
+            set name = name
         where name =#{name}
     </update>
 

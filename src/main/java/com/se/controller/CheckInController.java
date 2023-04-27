@@ -15,7 +15,7 @@ public class CheckInController {
 
     @Autowired
     public CheckInController(CheckInService checkInService) {
-        this.checkInService=checkInService;
+        this.checkInService = checkInService;
     }
 
     @PostMapping("/checkIn")

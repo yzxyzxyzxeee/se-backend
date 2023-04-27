@@ -9,7 +9,7 @@ public interface CheckInDao {
     //查看是否有打卡，用来防止重复打卡
     int ifCheckIn(String name,int year,int month,int day);
     //记录打卡
-    int checkIn(String name,int year,int month,int day);
+    int checkIn(String name,int year,int month,int day,int hour,int minute,int second);
     //获取本月打卡信息，用来计算薪资
     int totalThisMonth(String name,int year,int month);
     //修改stuff表的checkIn记录

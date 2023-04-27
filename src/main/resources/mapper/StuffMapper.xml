@@ -5,9 +5,9 @@
 
     <insert id = "save" parameterType="StuffPO" useGeneratedKeys="true" keyProperty="id">
         insert into stuff (`name`,`realName`,`gender`,`birth`,`phoneNumber`,`baseSalary`,`jobSalary`,`jobLevel`
-        ,`salaryCalculateWay`,`checkIN`,`job`)
+        ,`salaryCalculateWay`,`password`,`job`)
         values
-        (#{name},#{realName}, #{gender}, #{birth},#{phoneNumber},#{baseSalary},#{jobSalary},#{jobLevel},#{salaryCalculateWay},#{checkIn}
+        (#{name},#{realName}, #{gender}, #{birth},#{phoneNumber},#{baseSalary},#{jobSalary},#{jobLevel},#{salaryCalculateWay},#{password}
         ,#{job});
     </insert>
 
@@ -30,6 +30,6 @@
         <result column="jobSalary" property="jobSalary"></result>
         <result column="jobLevel" property="jobLevel"></result>
         <result column="salaryCalculateWay" property="salaryCalculateWay"></result>
-        <result column="checkIN" property="checkIn"></result>
+        <result column="password" property="password"></result>
     </resultMap>
 </mapper>
