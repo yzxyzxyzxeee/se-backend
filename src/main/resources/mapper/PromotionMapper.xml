@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.dao.PromotionDao">
+
+
+    <insert id="save" parameterType="com.se.model.po.PromotionPO">
+        insert into promotion (id, type, operator, state)
+        values (#{id},#{type},#{operator},#{state})
+    </insert>
+
+
+    <select id="findByState" resultType="com.se.model.po.PromotionPO">
+        select * from promotion where state = #{state}
+    </select>
+
+    <select id="findById" resultType="com.se.model.po.PromotionPO">
+        select * from promotion where id=#{id}
+    </select>
+
+    <update id="updateState">
+        update promotion
+        set state = #{state}
+        where id = #{id}
+    </update>
+</mapper>

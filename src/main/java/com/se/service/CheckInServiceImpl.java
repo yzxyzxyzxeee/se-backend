@@ -31,8 +31,6 @@ public class CheckInServiceImpl implements CheckInService {
         }else{
             //修改checklog表的记录
             checkInDao.checkIn(name,year,month,day,hour,minute,second);
-            //修改stuff表的记录
-            checkInDao.updateCheckIn(name);
         }
     }
 }

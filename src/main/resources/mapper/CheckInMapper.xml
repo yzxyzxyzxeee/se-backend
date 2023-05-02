@@ -20,10 +20,10 @@
         where year=#{year} and month=#{month} and name=#{name}
     </select>
 
-    <update id="updateCheckIn">
-        update stuff
-            set name = name
-        where name =#{name}
-    </update>
+<!--    <update id="updateCheckIn">-->
+<!--        update stuff-->
+<!--            set name = name-->
+<!--        where name =#{name}-->
+<!--    </update>-->
 
 </mapper>

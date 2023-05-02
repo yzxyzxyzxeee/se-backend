@@ -10,8 +10,8 @@ public interface CheckInDao {
     int ifCheckIn(String name,int year,int month,int day);
     //记录打卡
     int checkIn(String name,int year,int month,int day,int hour,int minute,int second);
-    //获取本月打卡信息，用来计算薪资
+    //获取本月打卡信息，
     int totalThisMonth(String name,int year,int month);
     //修改stuff表的checkIn记录
-    void updateCheckIn(String name);
+    //void updateCheckIn(String name);
 }
