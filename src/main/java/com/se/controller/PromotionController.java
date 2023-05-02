@@ -17,7 +17,7 @@ public class PromotionController {
     @Autowired
     public PromotionController(PromotionService promotionService){this.promotionService=promotionService;}
 
-    @Authorized(roles = {Role.SALE_MANAGER,Role.ADMIN})
+    @Authorized(roles = {Role.SALE_STAFF, Role.ADMIN})
     @PostMapping(value="/promotion-make")
     public Response makePromotion(UserVO userVO, PromotionVO promotionVO){
         promotionService.makePromotion(userVO,promotionVO);
@@ -25,7 +25,7 @@ public class PromotionController {
     }
 
     @GetMapping(value = "/approval")
-    @Authorized (roles = { Role.GM, Role.ADMIN})
+    @Authorized (roles = { Role.SALE_MANAGER,Role.GM, Role.ADMIN})
     public Response approval(@RequestParam("id") String id,
                                   @RequestParam("state") State state)  {
         if(state.equals(State.FAILURE) || state.equals(State.PENDING)) {
