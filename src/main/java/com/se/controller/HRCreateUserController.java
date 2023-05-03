@@ -31,10 +31,10 @@ public class HRCreateUserController {
         return Response.buildSuccess(hrCreateUserService.getAllStuff());
     }
 
-//    @DeleteMapping("/delete")
-//    @Authorized(roles = {Role.ADMIN, Role.HR,Role.GM})
-//    public Response staffDelete(@RequestParam Integer id) {
-//        hrCreateUserService.delete(id);
-//        return Response.buildSuccess();
-//    }
+    @DeleteMapping("/delete")
+    @Authorized(roles = {Role.ADMIN, Role.HR,Role.GM})
+    public Response staffDelete(@RequestParam String name) {
+        hrCreateUserService.deleteStuff(name);
+        return Response.buildSuccess();
+    }
 }

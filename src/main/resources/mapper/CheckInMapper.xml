@@ -20,10 +20,19 @@
         where year=#{year} and month=#{month} and name=#{name}
     </select>
 
-<!--    <update id="updateCheckIn">-->
-<!--        update stuff-->
-<!--            set name = name-->
-<!--        where name =#{name}-->
-<!--    </update>-->
+    <select id="findAll" resultType="com.se.model.po.CheckInPO">
+            select * from checklog order by year,month,day
+    </select>
+
+    <resultMap id="CheckInPO" type="com.se.model.po.CheckInPO">
+        <result column="name" property="name"></result>
+        <result column="year" property="year"></result>
+        <result column="month" property="month"></result>
+        <result column="day" property="day"></result>
+        <result column="hour" property="hour"></result>
+        <result column="minute" property="minute"></result>
+        <result column="second" property="second"></result>
+
+    </resultMap>
 
 </mapper>

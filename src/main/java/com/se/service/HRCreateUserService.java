@@ -14,4 +14,6 @@ public interface HRCreateUserService {
 
     List<StuffVO> getAllStuff();
 
+
+    void deleteStuff(String name);
 }

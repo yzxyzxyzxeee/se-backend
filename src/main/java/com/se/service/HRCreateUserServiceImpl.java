@@ -4,7 +4,6 @@ import com.se.config.JwtConfig;
 import com.se.dao.StuffDao;
 import com.se.dao.UserDao;
 import com.se.exception.MyServiceException;
-import com.se.model.po.CustomerPO;
 import com.se.model.po.StuffPO;
 import com.se.model.vo.StuffVO;
 import com.se.model.vo.UserVO;
@@ -58,6 +57,13 @@ public class HRCreateUserServiceImpl implements HRCreateUserService {
         return res;
     }
 
+    @Override
+    public void deleteStuff(String name) {
+        int ans = stuffDao.delete1(name);
+        if (ans == 0) {
+            throw new MyServiceException("B0004", "删除失败！");
+        }
+    }
 
 
 }

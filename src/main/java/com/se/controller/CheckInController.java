@@ -1,6 +1,8 @@
 package com.se.controller;
 
 
+import com.se.auth.Authorized;
+import com.se.enums.Role;
 import com.se.service.CheckInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,13 @@ public class CheckInController {
     //只需要提供该操作用户的name（用户名）即可
     public Response checkIn(@RequestBody String name) {
         checkInService.checkIn(name);
+        return Response.buildSuccess();
+    }
+
+    @PostMapping("/getCheckIn")
+    @Authorized(roles = {Role.ADMIN, Role.GM})
+    public Response getCheckIn(){
+        checkInService.getCheckIn();
         return Response.buildSuccess();
     }
 }

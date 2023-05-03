@@ -42,28 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.findAllByType(type);
     }
 
-    @Override
-    public CustomerPO findCustomerById(Integer supplier) {
-        return customerDao.findOneById(supplier);
-    }
 
-    @Override
-    public CustomerPO findCustomerByName(String name) {
-        return customerDao.findOneByName(name);
-    }
-
-    int updateOne(CustomerPO customerPO) {
-        return 0;
-    }
-
-    CustomerPO findOneById(Integer supplier) {
-
-        return new CustomerPO();
-    }
-
-    List<CustomerPO> findAllByType(CustomerType customerType) {
-        return new ArrayList<>();
-    }
 
     public List<CustomerPO> findAll() {
         return customerDao.findAll();

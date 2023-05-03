@@ -24,7 +24,5 @@ public interface CustomerService {
 
     List<UserPO> findAllUser();
 
-    CustomerPO findCustomerById(Integer supplier);
 
-    CustomerPO findCustomerByName(String name);
 }

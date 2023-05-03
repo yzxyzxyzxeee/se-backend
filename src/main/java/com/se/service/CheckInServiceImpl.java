@@ -1,10 +1,15 @@
 package com.se.service;
 
 import com.se.dao.CheckInDao;
+import com.se.model.po.CheckInPO;
+import com.se.model.vo.CheckInVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 @Service
 public class CheckInServiceImpl implements CheckInService {
@@ -32,6 +37,18 @@ public class CheckInServiceImpl implements CheckInService {
             //修改checklog表的记录
             checkInDao.checkIn(name,year,month,day,hour,minute,second);
         }
+    }
+
+    @Override
+    public List<CheckInVO> getCheckIn() {
+        List<CheckInPO> all = checkInDao.findAll();
+        List<CheckInVO> res = new ArrayList<>();
+        for(CheckInPO checkInPO : all) {
+            CheckInVO vo = new CheckInVO();
+            BeanUtils.copyProperties(checkInPO, vo);
+            res.add(vo);
+        }
+        return res;
     }
 }
 

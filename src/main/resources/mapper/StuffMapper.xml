@@ -20,6 +20,10 @@
         select * from stuff
     </select>
 
+    <delete id = "delete1">
+        delete from stuff where id=#{id};
+    </delete>
+
     <resultMap id="StuffPO" type="com.se.model.po.StuffPO">
         <id column="name" property="name"></id>
         <result column="realName" property="realName"></result>

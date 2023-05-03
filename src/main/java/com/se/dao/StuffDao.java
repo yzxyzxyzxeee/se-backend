@@ -14,6 +14,6 @@ public interface StuffDao {
     int save(StuffPO stuffPO);
     StuffPO getStuffByName(String name);
     List<StuffPO> getAllStuff();
-    int delete(String name);
+    int delete1(String name);
 
 }
