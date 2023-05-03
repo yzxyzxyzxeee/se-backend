@@ -43,9 +43,9 @@ class PromotionTest {
                 .build();
         promotionService.makePromotion(userVO,promotionVO);
 
-//测试promotion创建功能
-//        List<PromotionVO> promotionVOS=promotionService.getByState(State.PENDING);
-//        Assertions.assertEquals(1,promotionVOS.size());
+        //测试promotion创建功能
+        //List<PromotionVO> promotionVOS=promotionService.getByState(State.PENDING);
+        //Assertions.assertEquals(1,promotionVOS.size());
 
         //测试审批功能
         promotionService.approval(promotionVO.getId(),State.SUCCESS);

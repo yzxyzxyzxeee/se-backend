@@ -11,5 +11,7 @@ public interface HRCreateUserService {
     //注册
     void register(StuffVO stuffVO);
 
+
     List<StuffVO> getAllStuff();
+
 }

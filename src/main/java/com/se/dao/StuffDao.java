@@ -1,5 +1,6 @@
 package com.se.dao;
 
+import com.se.model.po.CustomerPO;
 import com.se.model.po.StuffPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -13,4 +14,6 @@ public interface StuffDao {
     int save(StuffPO stuffPO);
     StuffPO getStuffByName(String name);
     List<StuffPO> getAllStuff();
+    int delete(String name);
+
 }

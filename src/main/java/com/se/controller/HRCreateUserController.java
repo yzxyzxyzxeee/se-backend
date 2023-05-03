@@ -6,10 +6,7 @@ import com.se.enums.Role;
 import com.se.model.vo.StuffVO;
 import com.se.service.HRCreateUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/HR-create-user")
@@ -34,4 +31,10 @@ public class HRCreateUserController {
         return Response.buildSuccess(hrCreateUserService.getAllStuff());
     }
 
+//    @DeleteMapping("/delete")
+//    @Authorized(roles = {Role.ADMIN, Role.HR,Role.GM})
+//    public Response staffDelete(@RequestParam Integer id) {
+//        hrCreateUserService.delete(id);
+//        return Response.buildSuccess();
+//    }
 }

@@ -19,7 +19,7 @@ public class PromotionController {
 
     @Authorized(roles = {Role.SALE_STAFF, Role.ADMIN})
     @PostMapping(value="/promotion-make")
-    public Response makePromotion(UserVO userVO, PromotionVO promotionVO){
+    public Response makePromotion(UserVO userVO,@RequestBody PromotionVO promotionVO){
         promotionService.makePromotion(userVO,promotionVO);
         return Response.buildSuccess();
     }
