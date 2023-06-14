@@ -26,18 +26,16 @@ public class PerformanceController {
         return Response.buildSuccess();
     }
 
-    @GetMapping("/findByName")
-    public Response findByName(@RequestParam String name,@RequestParam String month){
-        JSONObject json1 = JSONObject.parseObject(name);
-        String name1=String.valueOf(json1.get("name"));
-        JSONObject json2 = JSONObject.parseObject(name);
-        String month1=String.valueOf(json2.get("month"));
-        int month11=Integer.parseInt(month1);
-        return Response.buildSuccess(performanceService.readOutByName(name1,month11));
+    @PostMapping("/findByName")
+    public Response findByName(@RequestBody String str){
+        JSONObject json = JSONObject.parseObject(str);
+        String name1=String.valueOf(json.get("name"));
+        int month1=Integer.parseInt(String.valueOf(json.get("month")));
+        return Response.buildSuccess(performanceService.readOutByName(name1,month1));
     }
 
-    @GetMapping("/findAll")
-    public Response findAll(@RequestParam String month){
+    @PostMapping("/findAll")
+    public Response findAll(@RequestBody String month){
         JSONObject json1 = JSONObject.parseObject(month);
         String month1=String.valueOf(json1.get("month"));
         int month11=Integer.parseInt(month1);
