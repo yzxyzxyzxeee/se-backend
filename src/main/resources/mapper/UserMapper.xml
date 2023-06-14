@@ -25,7 +25,7 @@
 
     <update id="updateUser" >
         update user set `password` = #{newPw}
-        where name = #{name}
+        where `name` = #{name}
     </update>
 
 

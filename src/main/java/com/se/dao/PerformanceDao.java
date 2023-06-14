@@ -10,9 +10,11 @@ import java.util.List;
 @Repository
 @Mapper
 public interface PerformanceDao {
-    PerformancePO findByName(String name);
+    PerformancePO findByName(String name,int month);
 
     int save(PerformancePO performancePO);
 
-    List<PerformancePO> findAll();
+    List<PerformancePO> findAll(int month);
+
+    void clockIn(String name,int month);
 }

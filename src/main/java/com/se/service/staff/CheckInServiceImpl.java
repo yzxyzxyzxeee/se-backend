@@ -1,6 +1,7 @@
 package com.se.service.staff;
 
 import com.se.dao.CheckInDao;
+import com.se.dao.PerformanceDao;
 import com.se.model.po.CheckInPO;
 import com.se.model.vo.CheckInVO;
 import org.springframework.beans.BeanUtils;
@@ -14,9 +15,11 @@ import java.util.List;
 @Service
 public class CheckInServiceImpl implements CheckInService {
     private final CheckInDao checkInDao;
+    private final PerformanceDao performanceDao;
     @Autowired
-    public CheckInServiceImpl(CheckInDao checkInDao) {
+    public CheckInServiceImpl(CheckInDao checkInDao,PerformanceDao performanceDao) {
         this.checkInDao = checkInDao;
+        this.performanceDao=performanceDao;
     }
 
     @Override
@@ -36,6 +39,7 @@ public class CheckInServiceImpl implements CheckInService {
         }else{
             //修改checklog表的记录
             checkInDao.checkIn(name,year,month,day,hour,minute,second);
+            performanceDao.clockIn(name,month);//绩效表
         }
     }
 

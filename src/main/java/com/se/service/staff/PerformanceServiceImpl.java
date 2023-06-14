@@ -31,12 +31,12 @@ public class PerformanceServiceImpl implements PerformanceService{
 
     @Override
     public List<PerformancePO> readOut(int month) {
-        return performanceDao.findAll();
+        return performanceDao.findAll(month);
     }
 
     @Override
     public PerformancePO readOutByName(String name,int month) {
-        return performanceDao.findByName(name);
+        return performanceDao.findByName(name,month);
     }
 
 }
