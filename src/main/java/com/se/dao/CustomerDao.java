@@ -1,9 +1,8 @@
 package com.se.dao;
 
-
 import com.se.enums.CustomerType;
 import com.se.model.po.CustomerPO;
-import com.se.model.po.UserPO;
+import com.se.model.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +21,5 @@ public interface CustomerDao {
 
     List<CustomerPO> findAll();
 
-    List<UserPO> findAllUser();
+    List<User> findAllUser();
 }

@@ -1,6 +1,5 @@
 package com.se.exception;
 
-
 import lombok.Data;
 
 /**
@@ -19,4 +18,3 @@ public class MyServiceException extends RuntimeException {
         this.code = code;
     }
 }
-

@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.se.dao.UserDao">
-    <select id = "findByUsernameAndPassword" resultMap="UserPO">
+    <select id = "findByUsernameAndPassword" resultMap="User">
         select * from user where `name` = #{username} and password = #{password}
     </select>
 
-    <select id = "findByUsername" resultMap="UserPO">
+    <select id = "findByUsername" resultMap="User">
         select * from user where `name` = #{username}
     </select>
 
-    <select id="findAllUser" resultType="com.se.model.po.UserPO">
+    <select id="findAllUser" resultType="com.se.model.po.User">
         select * from user
     </select>
 
-    <insert id = "createUser" parameterType="UserPO" useGeneratedKeys="true" keyProperty="id">
+    <select id = "findPwByUsername" resultType="String">
+        select `password` from user where `name` = #{username}
+    </select>
+
+
+    <insert id = "createUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         insert into user (password, `name`, `role`)
         values (#{password}, #{name}, #{role})
     </insert>
 
+    <update id="updateUser" >
+        update user set `password` = #{newPw}
+        where name = #{name}
+    </update>
 
-    <resultMap id="UserPO" type="com.se.model.po.UserPO">
+
+    <resultMap id="User" type="com.se.model.po.User">
         <id column="id" property="id"></id>
         <result column="name" property="name"></result>
         <result column="password" property="password"></result>

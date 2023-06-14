@@ -1,6 +1,7 @@
 package com.se.dao;
 
-import com.se.model.po.UserPO;
+
+import com.se.model.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -8,9 +9,15 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserDao {
 
-    UserPO findByUsernameAndPassword(String username, String password);
+    User findByUsernameAndPassword(String username, String password);
 
-    int createUser(UserPO user);
+    int createUser(User user);
 
-    UserPO findByUsername(String username);
+    User findByUsername(String username);
+
+    int editPw(String oldPw,String newPw);
+
+    int updateUser(String name,String newPw);
+
+    String findPwByUsername(String name);
 }

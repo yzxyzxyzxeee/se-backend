@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.dao.StaffDao">
+
+
+    <insert id = "save" parameterType="StaffPO" useGeneratedKeys="true" keyProperty="id">
+        insert into stuff (`name`,`birth`,`phoneNumber`,`job`,`password`)
+        values
+        (#{name}, #{birth},#{phoneNumber},#{job},#{password});
+    </insert>
+
+    <select id = "getStaffByName" resultMap="StaffPO">
+        select * from stuff
+        where `name` = #{name}
+    </select>
+
+    <select id = "getAllStaff" resultMap="StaffPO">
+        select * from stuff
+    </select>
+
+    <resultMap id="StaffPO" type="com.se.model.po.StaffPO">
+        <id column="name" property="name"></id>
+        <result column="birth" property="birth"></result>
+        <result column="phoneNumber" property="phoneNumber"></result>
+        <result column="job" property="job"></result>
+<!--        <result column="password" property="password"></result>-->
+    </resultMap>
+</mapper>

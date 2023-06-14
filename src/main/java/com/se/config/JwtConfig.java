@@ -1,6 +1,5 @@
 package com.se.config;
 
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -8,9 +7,8 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-
+import com.se.model.po.User;
 import com.se.exception.MyServiceException;
-import com.se.model.po.UserPO;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -43,18 +41,18 @@ public class JwtConfig {
     /**
      * 签发jwt
      *
-     * @param userPO
+     * @param user
      * @return
      */
-    public String createJWT(UserPO userPO) {
+    public String createJWT(User user) {
         Date date = new Date();
         Date expireDate = new Date(date.getTime() + expire);
 
         String jwt = JWT.create()
                 //可以将基本信息放到claims中
-                .withClaim("name", userPO.getName())
+                .withClaim("name", user.getName())
                 //name
-                .withClaim("role", userPO.getRole().name())
+                .withClaim("role", user.getRole().name())
                 //超时设置,设置过期的日期
                 .withExpiresAt(expireDate)
                 //签发时间

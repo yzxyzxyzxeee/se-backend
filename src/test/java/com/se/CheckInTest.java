@@ -1,16 +1,14 @@
 package com.se;
 
 import com.se.dao.CheckInDao;
-import com.se.enums.Gender;
 import com.se.enums.Role;
-import com.se.model.vo.StuffVO;
-import com.se.service.CheckInService;
-import com.se.service.HRCreateUserService;
+import com.se.model.vo.StaffVO;
+import com.se.service.admin.AdminCreateGMService;
+import com.se.service.staff.CheckInService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,50 +20,41 @@ import java.util.Date;
 
 @SpringBootTest
 public class CheckInTest {
-    //¸Ã²âÊÔ¼ìÑé´ò¿¨¹¦ÄÜ
+    //è¯¥æµ‹è¯•æ£€éªŒæ‰“å¡åŠŸèƒ½
     @Autowired
     CheckInDao checkInDao;
     @Autowired
     CheckInService checkInService;
-
     @Autowired
-    HRCreateUserService hrCreateUserService;
+    AdminCreateGMService adminCreateGMService;
 
     @SneakyThrows
     @Test
     @Transactional
     @Rollback(value = true)
     public void test1() {
-        //ÏÈ´´½¨Ò»¸öÔ±¹¤ÕËºÅÓÃÓÚ²âÊÔ
-        String str="2001-11-14";
+        //å…ˆåˆ›å»ºä¸€ä¸ªå‘˜å·¥è´¦å·ç”¨äºæµ‹è¯•
+        String str="2000-12-27";
         SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse(str);
-        StuffVO stuffVO = StuffVO.builder()
-                .name("yzx")
-                .realName("yzx")
-                .gender(Gender.male)
+        StaffVO staffVO = StaffVO.builder()
+                .name("yy")
                 .birth(date)
-                .phoneNumber("110")
-                .baseSalary(BigDecimal.valueOf(10000))
-                .job(Role.HR)
-                .jobSalary(BigDecimal.valueOf(5000))
-                .jobLevel(1)
-                .salaryCalculateWay(1)
+                .phoneNumber("123321")
+                .job(Role.STAFF)
                 .password("123456")
                 .build();
-        hrCreateUserService.register(stuffVO);
-        //ÒÔÏÂÊÇ´ò¿¨²âÊÔ
-        checkInService.checkIn("yzx");
-        Calendar calendar=Calendar.getInstance();
-        int year= calendar.get(Calendar.YEAR);
-        int month= calendar.get(Calendar.MONTH)+1;
-        int day= calendar.get(Calendar.DAY_OF_MONTH);
-
-        Assertions.assertEquals(checkInDao.ifCheckIn("yzx",year,month,day),1);
-        Assertions.assertEquals(checkInDao.ifCheckIn("yzx",2000,month,day),0);
-        Assertions.assertEquals(checkInDao.totalThisMonth("yzx",year,month),1);
-//        Assertions.assertEquals(checkInDao.totalThisMonth("yzx",year,month),0);
+        adminCreateGMService.register(staffVO);
+        //ä»¥ä¸‹æ˜¯æ‰“å¡æµ‹è¯•
+       checkInService.checkIn("yy");
+       Calendar calendar=Calendar.getInstance();
+       int year= calendar.get(Calendar.YEAR);
+       int month= calendar.get(Calendar.MONTH)+1;
+       int day= calendar.get(Calendar.DAY_OF_MONTH);
+       Assertions.assertEquals(checkInDao.ifCheckIn("yy",year,month,day),1);
+       Assertions.assertEquals(checkInDao.ifCheckIn("yy",1999,month,day),0);
+       Assertions.assertEquals(checkInDao.totalThisMonth("yy",year,month),1);
+       Assertions.assertEquals(checkInDao.totalThisMonth("yy",1999,month),0);
     }
 
 }
-

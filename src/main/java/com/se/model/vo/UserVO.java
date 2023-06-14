@@ -1,5 +1,6 @@
 package com.se.model.vo;
 
+
 import com.se.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

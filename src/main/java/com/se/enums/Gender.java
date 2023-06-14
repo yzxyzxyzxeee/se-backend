@@ -7,8 +7,9 @@ public enum Gender implements BaseEnum<Gender,String>{
         this.value=value;
     }
     private final String value;
+
     @Override
     public String getValue() {
-        return null;
+        return value;
     }
 }

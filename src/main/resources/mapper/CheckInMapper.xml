@@ -4,8 +4,8 @@
 
     <select id="ifCheckIn" resultType="int">
         select COUNT(*)
-            from checklog
-            where year=#{year} and month=#{month} and day=#{day} and name=#{name}
+        from checklog
+        where year=#{year} and month=#{month} and day=#{day} and name=#{name}
     </select>
 
 
@@ -15,13 +15,13 @@
     </insert>
 
     <select id="totalThisMonth" resultType="int">
-        select COUNT(*)
-        from checklog
-        where year=#{year} and month=#{month} and name=#{name}
+        SELECT COUNT(*)
+        FROM (SELECT name FROM checklog WHERE year=#{year} and month=#{month} and name=#{name}
+        GROUP BY name HAVING count(*)>0)AS temp;
     </select>
 
     <select id="findAll" resultType="com.se.model.po.CheckInPO">
-            select * from checklog order by year,month,day
+        select * from checklog order by year,month,day
     </select>
 
     <resultMap id="CheckInPO" type="com.se.model.po.CheckInPO">

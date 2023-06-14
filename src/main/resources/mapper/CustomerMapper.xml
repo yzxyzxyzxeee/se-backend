@@ -34,7 +34,7 @@
         select * from customer
     </select>
 
-    <select id="findAllUser" resultType="com.se.model.po.UserPO">
+    <select id="findAllUser" resultType="com.se.model.po.User">
         select * from user
     </select>
 

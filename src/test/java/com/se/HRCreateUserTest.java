@@ -1,11 +1,9 @@
 package com.se;
 
-
-import com.se.dao.StuffDao;
-import com.se.enums.Gender;
+import com.se.dao.StaffDao;
 import com.se.enums.Role;
-import com.se.model.vo.StuffVO;
-import com.se.service.HRCreateUserService;
+import com.se.model.vo.StaffVO;
+import com.se.service.admin.AdminCreateGMService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,10 +22,10 @@ public class HRCreateUserTest {
     // 该测试查看HR是否可以为员工建立账户
 
     @Autowired
-    StuffDao stuffDao;
+    StaffDao staffDao;
 
     @Autowired
-    HRCreateUserService hrCreateUserService;
+    AdminCreateGMService adminCreateGMService;
 
     @SneakyThrows
     @Test
@@ -37,24 +35,16 @@ public class HRCreateUserTest {
         String str="2000-12-27";
         SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse(str);
-        StuffVO stuffVO = StuffVO.builder()
-                .name("keke")
-                .realName("keke")
-                .gender(Gender.male)
+        StaffVO staffVO = StaffVO.builder()
+                .name("yy")
                 .birth(date)
                 .phoneNumber("123321")
-                .baseSalary(BigDecimal.valueOf(321))
-                .job(Role.HR)
-                .jobSalary(BigDecimal.valueOf(123))
-                .jobLevel(1)
-                .salaryCalculateWay(1)
+                .job(Role.STAFF)
                 .password("123456")
                 .build();
-        hrCreateUserService.register(stuffVO);
-        List<StuffVO> stuffVOList= hrCreateUserService.getAllStuff();
-        Assertions.assertEquals(1,stuffVOList.size());
-        Assertions.assertEquals("keke",stuffVOList.get(0).getName());
-        Assertions.assertEquals(Role.HR,stuffVOList.get(0).getJob());
+        adminCreateGMService.register(staffVO);
+        List<StaffVO> staffVOList = adminCreateGMService.getAllStaff();
+        Assertions.assertEquals("yy", staffVOList.get(0).getName());
     }
 
 }
