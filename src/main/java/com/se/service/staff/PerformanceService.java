@@ -6,10 +6,10 @@ import com.se.model.vo.PerformanceVO;
 import java.util.List;
 
 public interface PerformanceService {
-    void writeIn(PerformanceVO performanceVO);
+    void writeIn(List<PerformanceVO> performanceVOList);
 
-    List<PerformancePO> readOut();
+    List<PerformancePO> readOut(int month);
 
-    PerformancePO readOutByName(String name);
+    PerformancePO readOutByName(String name,int month);
 
 }

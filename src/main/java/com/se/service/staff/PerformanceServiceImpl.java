@@ -21,19 +21,21 @@ public class PerformanceServiceImpl implements PerformanceService{
 
 
     @Override
-    public void writeIn(PerformanceVO performanceVO) {
-        PerformancePO performancePO=new PerformancePO();
-        BeanUtils.copyProperties(performanceVO,performancePO);
-        performanceDao.save(performancePO);
+    public void writeIn(List<PerformanceVO> performanceVOList) {
+        for(PerformanceVO performanceVO:performanceVOList){
+            PerformancePO performancePO=new PerformancePO();
+            BeanUtils.copyProperties(performanceVO,performancePO);
+            performanceDao.save(performancePO);
+        }
     }
 
     @Override
-    public List<PerformancePO> readOut() {
+    public List<PerformancePO> readOut(int month) {
         return performanceDao.findAll();
     }
 
     @Override
-    public PerformancePO readOutByName(String name) {
+    public PerformancePO readOutByName(String name,int month) {
         return performanceDao.findByName(name);
     }
 

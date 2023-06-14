@@ -24,7 +24,7 @@ public class CheckInController {
     //只需要提供该操作用户的name（用户名）即可
     public Response checkIn(@RequestBody String name) {
         System.out.println(name);
-        System.out.println("11111111111111111111");
+        //System.out.println("11111111111111111111");
         JSONObject json = JSONObject.parseObject(name);
         String str=String.valueOf(json.get("name"));
         checkInService.checkIn(str);

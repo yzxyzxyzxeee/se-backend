@@ -15,7 +15,6 @@ public interface UserDao {
 
     User findByUsername(String username);
 
-    int editPw(String oldPw,String newPw);
 
     int updateUser(String name,String newPw);
 

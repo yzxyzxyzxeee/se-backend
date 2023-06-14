@@ -33,7 +33,7 @@ public class AdminCreateGMController {
     @Authorized(roles = {Role.ADMIN})
     @PostMapping(value = "/createAll")
     public Response createNewUserAll(@RequestBody List<StaffVO> staffVO) throws ParseException {
-        adminCreateGMService.register(staffVO);
+        adminCreateGMService.registerAll(staffVO);
         return Response.buildSuccess();
     }
 
