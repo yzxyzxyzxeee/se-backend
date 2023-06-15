@@ -44,7 +44,6 @@ public class AdminCreateGMServiceImpl implements AdminCreateGMService {
         userVO.setName(staffVO.getName());
         userVO.setPassword(staffVO.getPassword());
         userVO.setRole(staffVO.getJob());
-        //TODO delete
         userService.register(userVO);
 
         StaffPO staffPO =new StaffPO();
@@ -66,7 +65,6 @@ public class AdminCreateGMServiceImpl implements AdminCreateGMService {
             userVO.setName(staffVO.getName());
             userVO.setPassword(staffVO.getPassword());
             userVO.setRole(staffVO.getJob());
-            //TODO delete
             userService.register(userVO);
 
             StaffPO staffPO =new StaffPO();
