@@ -17,9 +17,6 @@
         where `month`=#{month}
     </select>
 
-    <update id="clockIn">
-        update performance set `p5`=`p5`+1
-        where `name`=#{name} and `month`=#{month}
-    </update>
+
 
 </mapper>

@@ -16,5 +16,5 @@ public interface PerformanceDao {
 
     List<PerformancePO> findAll(int month);
 
-    void clockIn(String name,int month);
+
 }
