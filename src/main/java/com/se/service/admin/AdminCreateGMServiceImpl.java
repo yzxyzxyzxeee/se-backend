@@ -38,7 +38,6 @@ public class AdminCreateGMServiceImpl implements AdminCreateGMService {
     @Override
     @Transactional
     public void register(StaffVO staffVO) throws ParseException {
-        //通过lab6的userService注册账号
         UserService userService=new UserServiceImpl(userDao,jwtConfig);
         UserVO userVO=new UserVO();
         userVO.setName(staffVO.getName());
@@ -50,11 +49,11 @@ public class AdminCreateGMServiceImpl implements AdminCreateGMService {
         StaffPO staffPO =new StaffPO();
         BeanUtils.copyProperties(staffVO, staffPO);
         staffPO.setPassword("123456");
-        Date date=staffVO.getBirth();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString = sdf.format(date);
-        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
-        staffPO.setBirth(date1);
+        String date=staffVO.getBirth();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String dateString = sdf.format(date);
+//        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
+        staffPO.setBirth(date);
         staffDao.save(staffPO);
     }
 
@@ -68,16 +67,14 @@ public class AdminCreateGMServiceImpl implements AdminCreateGMService {
             userVO.setRole(staffVO.getJob());
             //TODO delete
             userService.register(userVO);
-
             StaffPO staffPO =new StaffPO();
             BeanUtils.copyProperties(staffVO, staffPO);
             staffPO.setPassword("123456");
-            //staffPO.setJob();
-            Date date=staffVO.getBirth();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String dateString = sdf.format(date);
-            Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
-            staffPO.setBirth(date1);
+            String date=staffVO.getBirth();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String dateString = sdf.format(date);
+//        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
+            staffPO.setBirth(date);
             staffDao.save(staffPO);
         }
     }

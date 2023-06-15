@@ -34,8 +34,8 @@ public class PerformanceController {
         return Response.buildSuccess(performanceService.readOutByName(name1,month1));
     }
 
-    @PostMapping("/findAll")
-    public Response findAll(@RequestBody String month){
+    @GetMapping("/findAll")
+    public Response findAll(@RequestParam String month){
         JSONObject json1 = JSONObject.parseObject(month);
         String month1=String.valueOf(json1.get("month"));
         int month11=Integer.parseInt(month1);

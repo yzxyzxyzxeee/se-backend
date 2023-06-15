@@ -45,13 +45,11 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public Response userEdit(@RequestBody String name,@RequestBody String oldPw,@RequestBody String newPw) {
-        JSONObject json1 = JSONObject.parseObject(name);
+    public Response userEdit(@RequestBody String str) {
+        JSONObject json1 = JSONObject.parseObject(str);
         String name1=String.valueOf(json1.get("name"));
-        JSONObject json2 = JSONObject.parseObject(oldPw);
-        String oldPw1=String.valueOf(json2.get("oldPassword"));
-        JSONObject json3 = JSONObject.parseObject(newPw);
-        String newPw1=String.valueOf(json3.get("newPassword"));
+        String oldPw1=String.valueOf(json1.get("oldPassword"));
+        String newPw1=String.valueOf(json1.get("newPassword"));
         userService.editPw(name1,oldPw1,newPw1);
         return Response.buildSuccess();
     }

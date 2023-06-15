@@ -17,7 +17,7 @@ public class StaffVO {
     //name对应UserVO的用户名，realName是这个员工的真名
     private String name;
 
-    private Date birth;
+    private String birth;
     private String phoneNumber;
 
     private Role job;

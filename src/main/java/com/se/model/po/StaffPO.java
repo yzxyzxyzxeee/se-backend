@@ -17,7 +17,7 @@ public class StaffPO {
     //相比VO，多加了个打卡
     private String name;
 
-    private Date birth;
+    private String birth;
     private String phoneNumber;
 
     private Role job;
