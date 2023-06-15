@@ -30,6 +30,15 @@ public class PerformanceServiceImpl implements PerformanceService{
     }
 
     @Override
+    public void writeInPer(PerformanceVO performanceVO) {
+
+            PerformancePO performancePO=new PerformancePO();
+            BeanUtils.copyProperties(performanceVO,performancePO);
+            performanceDao.save(performancePO);
+    }
+
+
+    @Override
     public List<PerformancePO> readOut(int month) {
         return performanceDao.findAll(month);
     }

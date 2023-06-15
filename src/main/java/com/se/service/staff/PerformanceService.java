@@ -8,6 +8,8 @@ import java.util.List;
 public interface PerformanceService {
     void writeIn(List<PerformanceVO> performanceVOList);
 
+    void writeInPer(PerformanceVO performanceVO);
+
     List<PerformancePO> readOut(int month);
 
     PerformancePO readOutByName(String name,int month);

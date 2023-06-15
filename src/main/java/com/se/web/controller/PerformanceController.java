@@ -26,6 +26,13 @@ public class PerformanceController {
         return Response.buildSuccess();
     }
 
+    @PostMapping("/savePer")
+    @Authorized(roles={Role.GM})
+    public Response savePer(@RequestBody PerformanceVO performanceVO){
+        performanceService.writeInPer(performanceVO);
+        return Response.buildSuccess();
+    }
+
     @PostMapping("/findByName")
     public Response findByName(@RequestBody String str){
         JSONObject json = JSONObject.parseObject(str);
@@ -34,8 +41,8 @@ public class PerformanceController {
         return Response.buildSuccess(performanceService.readOutByName(name1,month1));
     }
 
-    @GetMapping("/findAll")
-    public Response findAll(@RequestParam String month){
+    @PostMapping("/findAll")
+    public Response findAll(@RequestBody String month){
         JSONObject json1 = JSONObject.parseObject(month);
         String month1=String.valueOf(json1.get("month"));
         int month11=Integer.parseInt(month1);
